@@ -1,0 +1,73 @@
+Business Information:
+
+
+Kazzy Autos
+Car dealer in Nigeria
+5.05 Google reviews
+Address: plot 244, Gowon estate, 22 Rd 2, ipaja, Ipaja, Lagos 100278, Lagos, Nigeria
+Phone: +234 813 108 4067
+Hours: 
+Closed · Opens 8 AM Thu
+Suggest an edit · Own this business?
+
+IG: https://www.instagram.com/kazzy_autos
+TikTok: https://www.tiktok.com/@kazzyauto
+
+
+"A premier auto dealership based in Lagos, Nigeria, specializing in top-quality foreign-used (Tokunbo), well-maintained Nigerian-used cars, and custom vehicle importation from global markets. We provide reliable, transparent, and affordable car ownership solutions tailored to every budget."
+
+
+Best place to get your dream car
+Direct importation 🚘
+Foreign, New and Local cars
+
+
+I want you to build me a very luxurious website for my uncle's auto dealership business ... his brand color is red,black and white.
+
+we will be adding our general footer, favicon, and logo later and also a hero image on the home page,
+
+our pages will be home, meet the team, contact us, services, car catalog or inventory which ever sounds better, Google Map direction, refund terms and policy.
+on the home page we will have our car inspection time and close hours
+car inspection appointment booking then posting it to WhatsApp (I have my uncle's WhatsApp business) we will come back to integrate that as well.
+Open hours are Saturday to sunday 8am to 6pm as well for inspection timing.
+
+the meet the team page will be a headshot of the ceo and other employees if there is any.
+contact us will be their business social media handles which i added above and also their telephone and WhatsApp line, also the services page should be merged to contact us so after reading services you can contact them. then the inventory will be a nice picture which you might even help me sharpen then ... and then display the pictures as a slide show, then I want an embedded nice google map direction for clients using the address provided above. then also the refund policy page 
+
+
+then our footer will be general and shared....
+
+use the social media handles and placeholders images... then copyright by Kazzy auto then website created and managed by OG Tee refund policy ... then I'll use the RC: Number which is RC:3226430 and since it is registered will use the corporate affairs commission image as well in the footer
+
+Kazzy (Inblack color) Autos (inred color)
+slogan is : One stop for all things automobile
+
+services are auto sales, car loan. insurance, car swap, direct importation.
+
+
+then the appointment posting we could use WhatsApp calendar.
+
+I want this to be a complete html page with a luxurious outlook and a very i mean extreme and luxurious user experience, navigation, scrolling, also add a welcome banner and a welcome message.
+
+then at every page load up we will have our splash logo... I will be uploading an image ... use this as our favicon, transparent, opaque splash loadup image ... footer image ... make this nice and of great quality please.... the meet the team page will be headshot image, and names and a little write ... atleast 4 headshot ... ceo at the top then the rest 3 beneath it in this structure.
+
+copyright 2026 made by og tee
+
+
+project folder is: C:\Users\brent\Downloads\kazzyauto
+
+images is inside as well rc and kazzyauto
+
+
+
+A few fixes...
+
+inspection is allowed all days from Saturday to sunday so update the days allowed to selected in the appointment booking.
+
+Now if you recheck the folder i added some new images for the slide show and first pop up video when the website DOM loads.
+
+also add a cookie privacy banner
+
+
+===================== prompt end====================================
+
