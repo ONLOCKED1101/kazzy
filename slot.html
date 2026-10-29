@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Browse Kazzy Autos vehicle listings. Explore photos, video, specifications and current availability from our Ipaja, Lagos dealership.">
+  <title>The Slot | Kazzy Autos</title>
+  <link rel="icon" type="image/jpeg" href="kazzyautologo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="slot.css">
+</head>
+<body>
+  <div class="announcement">Quality cars. Straightforward conversations. A better way to buy.</div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Kazzy Autos home">
+        <img src="kazzyautologo.jpg" alt="">
+        <span><span class="brand-wordmark">KAZZY<span> AUTOS</span></span><span class="brand-tag">One stop for all things automobile</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">☰</button>
+      <nav class="nav-links" id="primary-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="slot.html" aria-current="page">The Slot</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#inspection">Book an inspection</a>
+        <a class="nav-cta" href="index.html#contact">Talk to Kazzy Autos ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="eyebrow">The Kazzy Autos collection</div>
+        <h1>Find your next<br><span>favourite.</span></h1>
+        <p>Browse the cars, explore every available photo and video, and see the details before you book an inspection. Prices and availability are confirmed directly with our team.</p>
+      </div>
+    </section>
+
+    <section class="container" aria-label="Vehicle listings">
+      <div class="toolbar">
+        <div class="toolbar-inner">
+          <div class="filters">
+            <label class="sr-only" for="slot-search">Search vehicles</label>
+            <input id="slot-search" type="search" placeholder="Search make, model, or vehicle..." autocomplete="off">
+            <label class="sr-only" for="slot-condition">Filter vehicle condition</label>
+            <select id="slot-condition">
+              <option value="">All conditions</option>
+              <option value="foreign">Foreign-used</option>
+              <option value="local">Nigerian-used</option>
+              <option value="new">New</option>
+            </select>
+            <label class="sr-only" for="slot-make">Filter vehicle make</label>
+            <select id="slot-make"><option value="">All makes</option></select>
+          </div>
+          <div class="results-count" id="results-count" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="listing-grid" id="listing-grid" aria-live="polite">
+        <div class="slot-loading">Loading current vehicle listings…</div>
+      </div>
+    </section>
+
+    <section class="container trust-row" aria-label="Our dealership services">
+      <article class="trust-item"><strong>Thoughtful vehicle details</strong><p>Review the listing details and media, then contact us to confirm the vehicle's current condition, price, and availability.</p></article>
+      <article class="trust-item"><strong>Support from our team</strong><p>Our Lagos team can answer your questions and help arrange an in-person viewing or inspection.</p></article>
+      <article class="trust-item"><strong>After-sales options</strong><p>Ask us about vehicle finance, insurance, maintenance support, swaps, and direct importation.</p></article>
+    </section>
+  </main>
+
+  <aside class="cookie-banner" id="cookie-banner" aria-label="Cookie and privacy notice" hidden>
+    <div><strong>Cookie & privacy notice</strong><p>This site uses essential browser storage and third-party fonts. <a href="index.html#site-privacy">Read our cookie information</a>.</p></div>
+    <button class="cookie-dismiss" id="cookie-dismiss" type="button">Got it</button>
+  </aside>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Kazzy Autos · Website created & managed by OG Tee.</span><span><a href="index.html">Home</a> · <a href="index.html#refund-policy">Refund terms</a> · <a href="admin.html">Admin sign in</a></span></div></footer>
+  <script src="slot-common.js" defer></script>
+  <script src="slot.js" defer></script>
+</body>
+</html>
