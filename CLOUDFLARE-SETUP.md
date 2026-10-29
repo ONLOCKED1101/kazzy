@@ -36,6 +36,8 @@ For Git integration, ensure the repository includes the `functions` directory, `
 
 If `/admin.html` reports that the D1 binding is missing, add the `DB` binding in Pages settings. If it reports that the database tables are not initialized, run `schema.sql` in that D1 database's **Console**. These settings are separate from Git deployments.
 
+To confirm the Pages Function is deployed, open `/api/slot/admin/me` on your live site. It should return JSON such as `{"initialized":false,"authenticated":false,"username":null}` (or `initialized:true` after setup). If it shows the website HTML instead, check the Pages project's **Build settings**: set **Root directory** to the repository folder containing `functions/` and set **Build output directory** to `.`. The deployed commit must include `functions/api/slot/admin/me.js` and `functions/api/slot/_utils.js`; the deployment log should show Functions being built. Trigger a fresh deployment after correcting the repository root or build output settings.
+
 ## Inventory notes
 
 - Only `available` records are shown publicly. `draft` is private to Admin; `sold` records are not shown in the public inventory.

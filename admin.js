@@ -9,11 +9,15 @@ let keptMedia = [];
 
 async function api(path, options = {}) {
   const response = await fetch(path, { credentials: "same-origin", cache: "no-store", ...options });
+  const responseText = await response.text();
   let result;
   try {
-    result = await response.json();
+    result = JSON.parse(responseText);
   } catch {
-    throw new Error(`The server returned an invalid response (${response.status}).`);
+    if (response.status === 200 && /^\s*</.test(responseText)) {
+      throw new Error("Cloudflare returned the website page instead of the admin API. The Pages Function for this deployment is missing. Check that the repository root contains the functions folder, the Pages output directory is set to ., and the latest deployment includes Functions.");
+    }
+    throw new Error(`The admin API returned a non-JSON response (${response.status}). Check the latest Cloudflare Pages deployment and Functions logs.`);
   }
   if (!response.ok) throw new Error(result.error || `Request failed (${response.status}).`);
   return result;
