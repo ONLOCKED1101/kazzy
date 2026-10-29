@@ -38,14 +38,24 @@ export async function onRequestPost(context) {
   }
   if (existing) return json({ error: "Initial admin setup has already been completed. Sign in instead." }, 409);
 
-  const salt = randomHex(16);
-  const hash = await passwordHash(password, salt);
+  let salt;
+  let hash;
+  try {
+    salt = randomHex(16);
+    hash = await passwordHash(password, salt);
+  } catch (error) {
+    console.error("Could not hash the initial Kazzy Autos admin password.", error);
+    return json({ error: "Cloudflare could not hash the admin password. Check the Pages Function logs for the setup request." }, 500);
+  }
   try {
     await env.DB.prepare("INSERT INTO admins (id, username, password_salt, password_hash) VALUES (1, ?, ?, ?)")
       .bind(username, salt, hash).run();
   } catch (error) {
     console.error("Could not create the initial Kazzy Autos admin.", error);
-    return json({ error: "Admin setup could not be completed. Confirm setup is still available and try again." }, 409);
+    if (error instanceof Error && /unique constraint|constraint failed/i.test(error.message)) {
+      return json({ error: "Initial admin setup has already been completed. Sign in instead." }, 409);
+    }
+    return json({ error: "Cloudflare could not save the admin account to D1. Check the Pages Function logs for the setup request." }, 500);
   }
   return json({ message: "Initial admin account created. Sign in to manage listings." }, 201);
 }
