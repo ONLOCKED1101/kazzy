@@ -15,7 +15,8 @@ async function constantTimeMatch(left, right) {
 export async function onRequestPost(context) {
   const { request, env } = context;
   if (!requireSameOrigin(request)) return json({ error: "Request origin was not accepted." }, 403);
-  if (!env.DB || !env.ADMIN_SETUP_KEY) return json({ error: "Admin setup is not configured. Contact the site administrator." }, 503);
+  if (!env.DB) return json({ error: "Cloudflare Pages is missing the D1 binding named DB. Add it in the Pages project settings, then redeploy." }, 503);
+  if (!env.ADMIN_SETUP_KEY) return json({ error: "Cloudflare Pages is missing the ADMIN_SETUP_KEY secret. Add it in the Pages project settings, then redeploy." }, 503);
   const body = await readJson(request);
   if (!body || typeof body !== "object") return json({ error: "Provide setup details." }, 400);
   const username = typeof body.username === "string" ? body.username.trim() : "";
@@ -25,7 +26,16 @@ export async function onRequestPost(context) {
   if (password.length < 12 || password.length > 128) return json({ error: "Password must be 12–128 characters." }, 400);
   if (!await constantTimeMatch(setupKey, env.ADMIN_SETUP_KEY)) return json({ error: "The one-time setup key is invalid." }, 403);
 
-  const existing = await env.DB.prepare("SELECT id FROM admins LIMIT 1").first();
+  let existing;
+  try {
+    existing = await env.DB.prepare("SELECT id FROM admins LIMIT 1").first();
+  } catch (error) {
+    if (error instanceof Error && /no such table/i.test(error.message)) {
+      console.error("Kazzy Autos admin tables are missing from the bound D1 database.", error);
+      return json({ error: "The D1 database is connected, but its tables are not initialized. Run schema.sql in the database's Cloudflare console." }, 503);
+    }
+    throw error;
+  }
   if (existing) return json({ error: "Initial admin setup has already been completed. Sign in instead." }, 409);
 
   const salt = randomHex(16);
