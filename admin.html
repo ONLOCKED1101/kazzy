@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Secure Kazzy Autos vehicle inventory administration.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Inventory Admin | Kazzy Autos</title>
+  <link rel="icon" type="image/jpeg" href="kazzyautologo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="slot.css">
+</head>
+<body>
+  <div class="announcement">Kazzy Autos · Private inventory administration</div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Kazzy Autos home">
+        <img src="kazzyautologo.jpg" alt="">
+        <span><span class="brand-wordmark">KAZZY<span> AUTOS</span></span><span class="brand-tag">One stop for all things automobile</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Admin navigation">
+        <a href="index.html">Home</a>
+        <a href="slot.html">View The Slot</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container admin-main">
+    <div class="admin-heading">
+      <div><div class="eyebrow">Private access</div><h1>Inventory studio.</h1></div>
+      <a class="button button-secondary" href="slot.html">View The Slot ↗</a>
+    </div>
+
+    <section class="admin-card" id="configuration-message" hidden>
+      <h2>Admin setup needs attention</h2>
+      <p id="configuration-copy">Connect the Cloudflare D1 database and R2 media bucket to use inventory administration.</p>
+    </section>
+
+    <section class="admin-card" id="setup-panel" hidden>
+      <h2>Create the first admin account</h2>
+      <p>Initial setup is allowed once only and requires the one-time setup key configured in Cloudflare Pages secrets. Save that key securely before continuing.</p>
+      <form class="admin-form" id="setup-form">
+        <div class="admin-field full"><label for="setup-key">One-time setup key</label><input id="setup-key" name="setupKey" type="password" autocomplete="off" required></div>
+        <div class="admin-field"><label for="setup-username">Admin username</label><input id="setup-username" name="username" minlength="3" maxlength="32" pattern="[A-Za-z0-9_]+" autocomplete="username" required></div>
+        <div class="admin-field"><label for="setup-password">Admin password</label><input id="setup-password" name="password" type="password" minlength="12" maxlength="128" autocomplete="new-password" required></div>
+        <div class="admin-field full"><label for="setup-confirm">Confirm password</label><input id="setup-confirm" name="confirm" type="password" minlength="12" maxlength="128" autocomplete="new-password" required></div>
+        <div class="admin-actions"><button type="submit">Create admin account</button></div>
+      </form>
+      <p class="admin-status" id="setup-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="admin-card" id="login-panel" hidden>
+      <h2>Sign in</h2>
+      <p>Use your Kazzy Autos inventory administrator account.</p>
+      <form class="admin-form" id="login-form">
+        <div class="admin-field"><label for="login-username">Username</label><input id="login-username" name="username" autocomplete="username" required></div>
+        <div class="admin-field"><label for="login-password">Password</label><input id="login-password" name="password" type="password" autocomplete="current-password" required></div>
+        <div class="admin-actions"><button type="submit">Sign in</button></div>
+      </form>
+      <p class="admin-status" id="login-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="admin-app" hidden>
+      <section class="admin-card">
+        <div class="admin-heading">
+          <div><div class="eyebrow">Manage your collection</div><h2 id="editor-title">Add a vehicle</h2></div>
+          <button class="admin-button" id="logout-button" type="button">Sign out</button>
+        </div>
+        <form class="admin-form" id="car-form">
+          <div class="admin-field"><label for="car-title">Listing title *</label><input id="car-title" name="title" maxlength="120" required></div>
+          <div class="admin-field"><label for="car-make">Make *</label><input id="car-make" name="make" maxlength="60" required></div>
+          <div class="admin-field"><label for="car-model">Model *</label><input id="car-model" name="model" maxlength="60" required></div>
+          <div class="admin-field"><label for="car-year">Year</label><input id="car-year" name="year" type="number" min="1950" max="2030"></div>
+          <div class="admin-field"><label for="car-price">Price (NGN)</label><input id="car-price" name="priceNgn" type="number" min="0" step="1"></div>
+          <div class="admin-field"><label for="car-condition">Condition *</label><select id="car-condition" name="condition" required><option value="foreign">Foreign-used</option><option value="local">Nigerian-used</option><option value="new">New</option></select></div>
+          <div class="admin-field"><label for="car-mileage">Mileage (km)</label><input id="car-mileage" name="mileageKm" type="number" min="0"></div>
+          <div class="admin-field"><label for="car-cylinders">Cylinders</label><input id="car-cylinders" name="cylinders" type="number" min="1" max="24"></div>
+          <div class="admin-field"><label for="car-transmission">Transmission</label><input id="car-transmission" name="transmission" maxlength="40" placeholder="Automatic"></div>
+          <div class="admin-field"><label for="car-fuel">Fuel type</label><input id="car-fuel" name="fuelType" maxlength="40" placeholder="Petrol"></div>
+          <div class="admin-field"><label for="car-interior">Interior color</label><input id="car-interior" name="interiorColor" maxlength="50"></div>
+          <div class="admin-field"><label for="car-exterior">Exterior color</label><input id="car-exterior" name="exteriorColor" maxlength="50"></div>
+          <div class="admin-field"><label for="car-vin">VIN</label><input id="car-vin" name="vin" maxlength="40"></div>
+          <div class="admin-field"><label for="car-vehicle-id">Vehicle ID</label><input id="car-vehicle-id" name="vehicleId" maxlength="40"></div>
+          <div class="admin-field"><label for="car-location">Location</label><input id="car-location" name="location" maxlength="120" value="Lagos, Ipaja"></div>
+          <div class="admin-field"><label for="car-status">Listing status</label><select id="car-status" name="status"><option value="available">Available</option><option value="draft">Draft</option><option value="sold">Sold</option></select></div>
+          <div class="admin-field full"><label for="car-description">Description</label><textarea id="car-description" name="description" maxlength="5000"></textarea></div>
+          <div class="admin-field full"><label for="car-features">Features (one per line)</label><textarea id="car-features" name="features" placeholder="Air conditioning&#10;Reverse camera&#10;Leather seats"></textarea></div>
+          <div class="media-manager">
+            <label for="car-media">Vehicle photos and videos</label>
+            <input id="car-media" name="media" type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/webm" multiple>
+            <p>Upload JPEG, PNG, or WebP images (max 12 MB each) and MP4 or WebM videos (max 100 MB each). Up to 20 items per car.</p>
+            <div class="media-queue" id="media-queue"></div>
+          </div>
+          <div class="admin-actions"><button type="submit">Save vehicle listing</button><button class="secondary" id="cancel-edit" type="button" hidden>Cancel edit</button></div>
+        </form>
+        <p class="admin-status" id="editor-status" role="status" aria-live="polite"></p>
+      </section>
+      <section class="admin-card">
+        <h2>Your listings</h2>
+        <p>Available listings appear on The Slot. Draft listings stay private. Sold listings are removed from the public inventory.</p>
+        <div class="admin-list" id="admin-list"><p>Loading listings…</p></div>
+      </section>
+    </section>
+  </main>
+  <aside class="cookie-banner" id="cookie-banner" aria-label="Cookie and privacy notice" hidden>
+    <div><strong>Cookie & privacy notice</strong><p>Admin sign-in uses an essential secure session cookie. <a href="index.html#site-privacy">Read our cookie information</a>.</p></div>
+    <button class="cookie-dismiss" id="cookie-dismiss" type="button">Got it</button>
+  </aside>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Kazzy Autos · Private inventory administration.</span><a href="index.html">Return to Kazzy Autos</a></div></footer>
+  <script src="slot-common.js" defer></script>
+  <script src="admin.js" defer></script>
+</body>
+</html>

@@ -168,6 +168,7 @@
     .welcome-video[open] { display: grid; grid-template-columns: 1fr; }
     .welcome-video-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 17px 20px; }
     .welcome-video-head strong { font: 600 1rem var(--display); }
+    .welcome-video-head .slot-link { margin-left: auto; padding: 9px 13px; background: var(--red); color: white; font-size: .68rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
     .video-close { width: 39px; height: 39px; border: 1px solid rgba(255,255,255,.3); background: transparent; color: white; font-size: 1.3rem; cursor: pointer; }
     .welcome-video video { display: block; width: 100%; max-height: min(68vh, 620px); background: #080808; object-fit: contain; }
     .welcome-video-note { margin: 0; padding: 13px 20px 17px; color: rgba(255,255,255,.65); font-size: .75rem; }
@@ -209,12 +210,19 @@
     .contact-copy > p { max-width: 470px; color: var(--muted); }
     .contact-list { margin-top: 31px; }
     .contact-row { display: grid; grid-template-columns: 42px 1fr; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); }
-    .contact-icon { color: var(--red); font-size: 1.1rem; }
+    .contact-icon { width: 36px; height: 36px; display: grid; place-items: center; }
+    .contact-icon img { width: 32px; height: 32px; object-fit: contain; }
     .contact-row small { display: block; color: var(--muted); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; }
     .contact-row strong, .contact-row a { font-size: .84rem; font-weight: 600; }
     .contact-social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-    .social-link { padding: 10px 14px; border: 1px solid var(--line); font-size: .73rem; font-weight: 600; transition: .2s; }
+    .social-link { display: inline-flex; align-items: center; gap: 9px; padding: 8px 12px; border: 1px solid var(--line); font-size: .73rem; font-weight: 600; transition: .2s; }
+    .social-link img { width: 25px; height: 25px; object-fit: contain; }
     .social-link:hover { border-color: var(--red); color: var(--red); }
+    .topbar-social a { display: inline-flex; align-items: center; gap: 6px; }
+    .topbar-social img { width: 17px; height: 17px; object-fit: contain; }
+    .footer-links a.with-icon { display: inline-flex; align-items: center; gap: 9px; }
+    .footer-links a.with-icon img { width: 22px; height: 22px; object-fit: contain; }
+    .button-icon { width: 24px; height: 24px; object-fit: contain; }
     .contact-panel { display: flex; flex-direction: column; justify-content: space-between; min-height: 430px; padding: 40px; background: var(--ink); color: white; }
     .contact-panel .eyebrow { color: #ff686d; }
     .contact-panel blockquote { margin: 27px 0; font: 500 clamp(1.8rem, 3.5vw, 3rem)/1.2 var(--serif); letter-spacing: -.035em; }
@@ -253,7 +261,8 @@
     .splash-line::after { display: block; width: 100%; height: 100%; background: var(--red); content: ""; animation: loading-line 1.3s ease-in-out infinite; transform: translateX(-100%); }
     @keyframes splash-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes loading-line { to { transform: translateX(100%); } }
-    .whatsapp-float { position: fixed; right: 25px; bottom: 25px; z-index: 10; width: 55px; height: 55px; display: grid; place-items: center; border: 2px solid white; border-radius: 50%; background: #1d9e58; color: white; font-size: 1.35rem; box-shadow: 0 6px 24px rgba(0,0,0,.25); transition: transform .2s; }
+    .whatsapp-float { position: fixed; right: 25px; bottom: 25px; z-index: 10; width: 55px; height: 55px; display: grid; place-items: center; border: 2px solid white; border-radius: 50%; background: #1d9e58; box-shadow: 0 6px 24px rgba(0,0,0,.25); transition: transform .2s; }
+    .whatsapp-float img { width: 39px; height: 39px; object-fit: contain; }
     .whatsapp-float:hover { transform: translateY(-4px); }
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -362,6 +371,7 @@
   <dialog class="welcome-video" id="welcome-video-modal" aria-labelledby="welcome-video-title">
     <div class="welcome-video-head">
       <strong id="welcome-video-title">Welcome to Kazzy Autos</strong>
+      <a class="slot-link" href="slot.html">Explore The Slot ↗</a>
       <button class="video-close" type="button" aria-label="Close welcome video">×</button>
     </div>
     <video id="welcome-video" controls autoplay muted playsinline preload="metadata" poster="benz%20front%20shot.jpeg">
@@ -387,7 +397,7 @@
         <a href="tel:+2348131084067">+234 813 108 4067</a>
         <span><span class="topbar-label">Inspection:</span> Daily, 8:00 AM–6:00 PM</span>
       </div>
-      <div class="topbar-social"><a href="https://www.instagram.com/kazzy_autos" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.tiktok.com/@kazzyauto" target="_blank" rel="noopener noreferrer">TikTok</a></div>
+      <div class="topbar-social"><a href="https://www.instagram.com/kazzy_autos" target="_blank" rel="noopener noreferrer"><img src="favicons/insta.jpg" alt="">Instagram</a><a href="https://www.tiktok.com/@kazzyauto" target="_blank" rel="noopener noreferrer"><img src="favicons/tiktok.png" alt="">TikTok</a></div>
     </div>
   </div>
 
@@ -401,6 +411,7 @@
       <nav class="nav-links" id="primary-nav" aria-label="Main navigation">
         <a href="#home">Home</a>
         <a href="#inventory">Inventory</a>
+        <a href="slot.html">The Slot</a>
         <a href="#services">Services</a>
         <a href="#team">Meet the team</a>
         <a href="#location">Find us</a>
@@ -417,7 +428,7 @@
         <h1>Find the car<br>that feels like <span>you.</span></h1>
         <p class="hero-copy">Foreign-used, Nigerian-used and new cars, handpicked with care. Make your next move with people who put your peace of mind first.</p>
         <div class="hero-actions">
-          <a class="button" href="#inventory">Explore our cars <span aria-hidden="true">↗</span></a>
+          <a class="button" href="slot.html">Explore The Slot <span aria-hidden="true">↗</span></a>
           <a class="button button-outline" href="#inspection">Book an inspection</a>
         </div>
         <div class="hero-note">Quality cars. Straightforward conversations. A better way to buy.</div>
@@ -615,7 +626,7 @@
           <h2>Find us in<br>Gowon Estate.</h2>
           <p>Visit Kazzy Autos in Ipaja, Lagos. Call ahead to arrange a vehicle viewing or inspection at a convenient time.</p>
           <div class="address-block"><strong>Kazzy Autos</strong><p>Plot 244, Gowon Estate, 22 Rd 2<br>Ipaja, Lagos 100278, Nigeria</p></div>
-          <a class="button button-dark" href="https://www.google.com/maps/dir/?api=1&amp;destination=Plot+244%2C+Gowon+Estate%2C+22+Rd+2%2C+Ipaja%2C+Lagos+100278%2C+Nigeria" target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a>
+          <a class="button button-dark" href="https://www.google.com/maps/dir/?api=1&amp;destination=Plot+244%2C+Gowon+Estate%2C+22+Rd+2%2C+Ipaja%2C+Lagos+100278%2C+Nigeria" target="_blank" rel="noopener noreferrer"><img class="button-icon" src="favicons/google-map.png" alt="">Get directions <span aria-hidden="true">↗</span></a>
         </div>
         <div class="map-frame reveal"><iframe title="Map showing Kazzy Autos in Ipaja, Lagos" src="https://maps.google.com/maps?q=Plot%20244%2C%20Gowon%20Estate%2C%2022%20Rd%202%2C%20Ipaja%2C%20Lagos%20100278%2C%20Nigeria&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
       </div>
@@ -628,14 +639,14 @@
           <h2>Tell us what<br>you have in mind.</h2>
           <p>Ask about the latest arrivals, request a car, or simply get a little advice. Our team is happy to help you take the next step.</p>
           <div class="contact-list">
-            <div class="contact-row"><div class="contact-icon" aria-hidden="true">☎</div><div><small>Call us</small><a href="tel:+2348131084067">+234 813 108 4067</a></div></div>
-            <div class="contact-row"><div class="contact-icon" aria-hidden="true">⌖</div><div><small>Visit our showroom</small><strong>Gowon Estate, Ipaja, Lagos</strong></div></div>
+            <div class="contact-row"><div class="contact-icon" aria-hidden="true"><img src="favicons/telephone.png" alt=""></div><div><small>Call us</small><a href="tel:+2348131084067">+234 813 108 4067</a></div></div>
+            <div class="contact-row"><div class="contact-icon" aria-hidden="true"><img src="favicons/google-map.png" alt=""></div><div><small>Visit our showroom</small><strong>Gowon Estate, Ipaja, Lagos</strong></div></div>
             <div class="contact-row"><div class="contact-icon" aria-hidden="true">◷</div><div><small>Inspection hours</small><strong>Every day, 8:00 AM–6:00 PM</strong></div></div>
           </div>
           <div class="contact-social">
-            <a class="social-link" href="https://www.instagram.com/kazzy_autos" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
-            <a class="social-link" href="https://www.tiktok.com/@kazzyauto" target="_blank" rel="noopener noreferrer">TikTok ↗</a>
-            <a class="social-link" href="https://wa.me/2348131084067" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+            <a class="social-link" href="https://www.instagram.com/kazzy_autos" target="_blank" rel="noopener noreferrer"><img src="favicons/insta.jpg" alt="">Instagram ↗</a>
+            <a class="social-link" href="https://www.tiktok.com/@kazzyauto" target="_blank" rel="noopener noreferrer"><img src="favicons/tiktok.png" alt="">TikTok ↗</a>
+            <a class="social-link" href="https://wa.me/2348131084067" target="_blank" rel="noopener noreferrer"><img src="favicons/whatsapp.png" alt="">WhatsApp ↗</a>
           </div>
         </div>
         <div class="contact-panel reveal">
@@ -680,13 +691,13 @@
           <div class="footer-registration"><img src="logo-rc.png" alt="Corporate Affairs Commission Nigeria logo"><span>Registered with the Corporate Affairs Commission<br>RC: 3226430</span></div>
         </div>
         <div><div class="footer-heading">Explore</div><nav class="footer-links" aria-label="Footer navigation"><a href="#home">Home</a><a href="#inventory">Car collection</a><a href="#stories">Sold & shared moments</a><a href="#services">Services</a><a href="#team">Meet the team</a><a href="#location">Google Map directions</a><a href="#refund-policy">Refund terms & policy</a></nav></div>
-        <div><div class="footer-heading">Get in touch</div><div class="footer-links"><a href="tel:+2348131084067">+234 813 108 4067</a><a href="https://wa.me/2348131084067" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://www.instagram.com/kazzy_autos" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.tiktok.com/@kazzyauto" target="_blank" rel="noopener noreferrer">TikTok</a><a href="#inspection">Book an inspection</a></div></div>
+        <div><div class="footer-heading">Get in touch</div><div class="footer-links"><a class="with-icon" href="tel:+2348131084067"><img src="favicons/telephone.png" alt="">+234 813 108 4067</a><a class="with-icon" href="https://wa.me/2348131084067" target="_blank" rel="noopener noreferrer"><img src="favicons/whatsapp.png" alt="">WhatsApp</a><a class="with-icon" href="https://www.instagram.com/kazzy_autos" target="_blank" rel="noopener noreferrer"><img src="favicons/insta.jpg" alt="">Instagram</a><a class="with-icon" href="https://www.tiktok.com/@kazzyauto" target="_blank" rel="noopener noreferrer"><img src="favicons/tiktok.png" alt="">TikTok</a><a class="with-icon" href="https://www.google.com/maps/dir/?api=1&amp;destination=Plot+244%2C+Gowon+Estate%2C+22+Rd+2%2C+Ipaja%2C+Lagos+100278%2C+Nigeria" target="_blank" rel="noopener noreferrer"><img src="favicons/google-map.png" alt="">Google Maps directions</a><a href="#inspection">Book an inspection</a></div></div>
       </div>
       <div class="footer-bottom"><span>© <span id="current-year">2026</span> <strong>Kazzy Autos.</strong> All rights reserved. · Website created & managed by OG Tee.</span><div class="footer-legal"><a href="#refund-policy">Refund policy</a><a href="#home">Back to top ↑</a></div></div>
     </div>
   </footer>
 
-  <a class="whatsapp-float" href="https://wa.me/2348131084067" target="_blank" rel="noopener noreferrer" aria-label="Chat with Kazzy Autos on WhatsApp">◉</a>
+  <a class="whatsapp-float" href="https://wa.me/2348131084067" target="_blank" rel="noopener noreferrer" aria-label="Chat with Kazzy Autos on WhatsApp"><img src="favicons/whatsapp.png" alt=""></a>
 
   <script async src="https://www.instagram.com/embed.js"></script>
   <script>
