@@ -1,6 +1,6 @@
 const SESSION_COOKIE = "kazzy_session";
 const SESSION_LIFETIME_SECONDS = 8 * 60 * 60;
-const PASSWORD_ITERATIONS = 310000;
+const PASSWORD_ITERATIONS = 100000;
 
 export function json(data, status = 200, headers = {}) {
   return new Response(JSON.stringify(data), {
